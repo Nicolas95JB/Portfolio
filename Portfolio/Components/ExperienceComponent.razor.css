@@ -1,0 +1,31 @@
+:root {
+    --color-blanco: #fff;
+    --color-gris: #ddd;
+}
+
+.experiencias {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--color-gris);
+}
+
+.experiencias .div-experiencia {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.experiencias .div-experiencia .div-empresa-periodo{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    gap: 5px;
+}

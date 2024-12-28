@@ -1,0 +1,65 @@
+@page "/experiencia"
+
+@using System;
+@using System.Globalization;
+
+<section class="experiencias">
+    <h3 class="titulo-seccion mb-4">EXPERIENCIAS</h3>
+    @foreach(var experiencia in experiencias)
+    {
+        <div class="div-experiencia">
+            <h4 class="titulo-cargo">@experiencia.JobTitle</h4>
+            <div class="div-empresa-periodo">
+                <h5 class="empresa">@experiencia.Company</h5>
+                <span class="mx-2"> | </span>
+                <h5 class="fecha-desde">@(experiencia.DateFrom.ToString("MMMM yyyy", new CultureInfo("es-ES")))</h5>
+                <span> - </span>
+                <h5 class="fecha-hasta">@(experiencia.CurrentJob ? " Currently" : experiencia.DateTo.Value.ToString("MMMM yyyy", new CultureInfo("es-ES")))</h5>
+            </div>
+            <p class="descripcion">
+                @experiencia.Description
+            </p>
+        </div>
+    }
+</section>
+
+@code 
+{
+    List<Experience> experiencias = new();
+
+    protected override void OnInitialized() {
+        experiencias.Add(new Experience(
+            "Software developer ssr - .NET Fullstack",
+            "IT Patagonia",
+            @"E-commers con integración VTEX para la venta digital de productos exclusivos para socios dentro de la
+                plataforma River ID.
+                Gestión de actividades dentro del club River, manejo de turnos, abonos control de acceso, permisos y
+                usuarios.
+                Análisis e implementación de XpressID: una integración para el reconocimiento facial y de documentos
+                en tiempo real para los hinchas y socios.
+                Desarrollo de Pre venta gastronomia, una seccion dentro de River ID para pre comprar de alimentos y
+                pick up dentro de las instalaciones de la cancha.
+                Desarrollo de Museo River una implementacion para gestionar y administrar turnos junto con la venta
+                online de entradas individuales y grupales
+            ",
+            new DateTime(2024, 02, 21),
+            null,
+            true
+        ));
+
+        experiencias.Add(new Experience(
+            "Software developer - .NET Fullstack",
+            "Binit Tech",
+            @" 2023: 
+                    Proyecto sobre gestion de pacientes para aplicacion medica, web app orientada a mobile.
+                    Proyecto sobre medicion y analisis en confort de hoteles.
+                    Trabajos internos de mejora al template de la empresa.
+                2021: Proyecto sobre refactorizar una webapp de gestión de seguros para Charles Taylor 
+                2020: Proyecto sobre seguimiento de repuestos y maquinaria para John Deere
+            ",
+            new DateTime(2020, 02, 01),
+            new DateTime(2023, 12, 01),
+            false
+        ));
+    }
+}
